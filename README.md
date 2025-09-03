@@ -64,7 +64,7 @@ pip install -r requirements.txt
 
 4. Place your trained model:
 - Create a `model` directory in the backend folder
-- Place your `.h5` model file as `model/banana_classifier.h5`
+- Place your `.h5` model file as `model/dnn.h5`
 
 5. Start the Flask server:
 ```bash
