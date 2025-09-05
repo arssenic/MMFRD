@@ -12,8 +12,9 @@ services:
         pythonVersion: 3.10.12
 
   # === Frontend (Vite/React) as Static Site ===
-  - type: static_site
+  - type: web
     name: mmfrd-frontend
+    env: static
     rootDir: .
     buildCommand: npm install && npm run build
     staticPublishPath: dist
