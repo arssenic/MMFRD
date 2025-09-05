@@ -5,11 +5,11 @@ from PIL import Image
 import tensorflow as tf
 import io
 import base64
-from tensorflow.keras.preprocessing import image
+# Removed: from tensorflow.keras.preprocessing import image
 import os
 
 app = Flask(__name__)
-CORS(app, origins=["http://localhost:5173"])  # Allow Vite dev server
+CORS(app)  # Allow Vite dev server
 
 # Configuration
 MODEL_PATH = 'model/dnn.h5'
@@ -62,7 +62,7 @@ def preprocess_image(img):
         img = img.convert('RGB')
     
     img = img.resize(IMG_SIZE)
-    img_array = image.img_to_array(img)
+    img_array = np.array(img)
     img_array = np.expand_dims(img_array, axis=0)
     # Normalize pixel values to [0,1] range as expected by most models
     img_array = img_array.astype(np.float32) / 255.0
@@ -144,7 +144,7 @@ def home():
         }
     })
 
-if __name__ == '__main__':
-    print("🚀 Starting Banana Ripeness Classification API...")
-    load_model()
-    app.run(host='0.0.0.0', port=5000, debug=False)
+# if __name__ == '__main__':
+#     print("🚀 Starting Banana Ripeness Classification API...")
+#     load_model()
+#     app.run(host='0.0.0.0', port=5000, debug=False)
