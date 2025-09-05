@@ -1,0 +1,20 @@
+services:
+  # === Backend (Flask + TensorFlow) ===
+  - type: web
+    name: mmfrd-backend
+    env: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    plan: free
+    build:
+      environment:
+        pythonVersion: 3.10.12
+
+  # === Frontend (Vite/React) as Static Site ===
+  - type: static_site
+    name: mmfrd-frontend
+    rootDir: .
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    plan: free
