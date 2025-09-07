@@ -2,4 +2,4 @@ Flask
 Flask-CORS
 tensorflow
 Pillow
-numpy
+numpy>=1.26.0
